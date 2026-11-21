@@ -26,6 +26,18 @@ The server binds to loopback, prints a local URL, and sends model requests to Ro
 
 The live hosted route is [roseram.com/downloads/claude-code](https://roseram.com/downloads/claude-code). It uses Roseram sign-in, server-side plan/credit checks, and usage metering. The hosted workspace talks to the parent Roseram page using a restricted message bridge; the Node.js client instead uses a developer API key. A standalone repository clone does not independently implement Roseram account login or billing.
 
+## Terminal workflow
+
+Use Node.js 22 or later and set `ROSERAM_API_KEY` in your shell.
+
+```sh
+npm run terminal -- --mode review --file src/index.mjs --prompt "Review error handling and edge cases"
+```
+
+For available modes, run `npm run terminal -- --help`. An interactive terminal keeps the recent conversation in memory. Use `/clear` to reset it and `/quit` to exit. Model requests may use Roseram credits.
+
+Repeat `--file` for up to 12 explicitly selected UTF-8 files under the current directory, totaling up to 48 KB. Selected text is sent with each request. Review proposals before applying changes to your project.
+
 ## Current limitations
 
 The current browser client reviews a prompt and one supplied text file (up to 65 KB). It does not scan repositories or run tests.
